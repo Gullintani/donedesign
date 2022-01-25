@@ -6,7 +6,7 @@ $(document).ready(function() {
  * Wrap images with fancybox support.
  */
 function wrapImageWithFancyBox() {
-    $('img').not('.sidebar-image img').not('#author-avatar img').not(".mdl-menu img").not(".something-else-logo img").not('[title=notice]').each(function() {
+    $('img').not('.sidebar-image img').not('#author-avatar img').not(".mdl-menu img").not(".something-else-logo img").each(function() {
         var $image = $(this);
         var imageCaption = $image.attr('alt');
         var $imageWrapLink = $image.parent('a');
@@ -27,16 +27,13 @@ function wrapImageWithFancyBox() {
 
     });
 
-    $('[data-fancybox="images"]').fancybox({
-      buttons : [ 
-        'slideShow',
-		'thumbs',
-        'zoom',
-        'fullScreen',
-        'close'
-      ],
-      thumbs : {
-        autoStart : false
-      }
+    $().fancybox({
+        selector: '[data-fancybox="images"]',
+        thumbs: false,
+        hash: true,
+        loop: false,
+        fullScreen: false,
+        slideShow: false,
+        protect: true,
     });
 }

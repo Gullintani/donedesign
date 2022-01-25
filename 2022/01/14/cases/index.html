@@ -10,10 +10,14 @@
 
     <!--Description-->
     
-        <meta name="description" content="$(function(){  
-        $(&#34;.pimg&#34;).click(function(){  
-            var _this = $(this);//将当前的pimg元素作为_this传入函数  
-            imgShow(&#34;#outerdiv&#34;, &#34;#in">
+        <meta name="description" content=".row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+  padding: 5px;
+}">
     
 
     <!--Author-->
@@ -66,13 +70,9 @@
         <link rel="icon" href="/img/Done Design Logo-favicon.png" type="image/x-icon">
     
 
+    <!-- fancybox support
+     -->
 
-    <!-- fancybox support -->
-    
-        
-<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
-
-    
 <meta name="generator" content="Hexo 6.0.0"></head>
 
 <body>
@@ -93,7 +93,27 @@
             </li>
             
             <li>
-                <a href="/archives">Archives</a>
+                <a href="/2022/01/14/hello-world/">关于我们 - About Us</a>
+            </li>
+            
+            <li>
+                <a href="/2022/01/14/services/">服务内容 - Services</a>
+            </li>
+            
+            <li>
+                <a href="/2022/01/14/members/">团队 - Team Members</a>
+            </li>
+            
+            <li>
+                <a href="/2022/01/14/our-clients/">合作客户 - Our Clients</a>
+            </li>
+            
+            <li>
+                <a href="/2022/01/14/cases/">项目案例 - Cases</a>
+            </li>
+            
+            <li>
+                <a href="/2022/01/13/contact/">联系我们 - Contact</a>
             </li>
             
         </ul>
@@ -163,82 +183,41 @@
 
 <div class="row">
   <div class="column">
-    <img src="/assets/cases-1.png" alt="Snow" style="width:100%"/>
+    <img src="/assets/cases-1.png" style="width:100%"/>
   </div>
   <div class="column">
-    <img src="/assets/cases-2.png" alt="Forest" style="width:100%"/>
-  </div>
-  <div class="column">
-    <img src="/assets/cases-3.png" alt="Mountains" style="width:100%"/>
-  </div>
-  <div class="column">
-    <img src="/assets/cases-4.png" alt="Mountains" style="width:100%"/>
+    <img src="/assets/cases-2.png" style="width:100%"/>
   </div>
 </div>
 
 <div class="row">
   <div class="column">
-    <img src="/assets/cases-5.png" alt="Snow" style="width:100%">
+    <img src="/assets/cases-3.png" style="width:100%"/>
   </div>
   <div class="column">
-    <img src="/assets/cases-6.png" alt="Forest" style="width:100%">
+    <img src="/assets/cases-4.png" style="width:100%"/>
+  </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <img src="/assets/cases-5.png" style="width:100%">
   </div>
   <div class="column">
-    <img src="/assets/cases-7.png" alt="Mountains" style="width:100%">
+    <img src="/assets/cases-6.png" style="width:100%">
+  </div>
+</div>
+
+<div class="row">
+  <div class="column">
+    <img src="/assets/cases-7.png" style="width:100%">
   </div>
   <div class="column">
-    <img src="/assets/cases-8.png" alt="Mountains" style="width:100%">
+    <img src="/assets/cases-8.png" style="width:100%">
   </div>
 </div>
 <hr>
 
-<script>  
-    $(function(){  
-        $(".pimg").click(function(){  
-            var _this = $(this);//将当前的pimg元素作为_this传入函数  
-            imgShow("#outerdiv", "#innerdiv", "#bigimg", _this);  
-        });  
-    });  
-
-    function imgShow(outerdiv, innerdiv, bigimg, _this){  
-        var src = _this.attr("src");//获取当前点击的pimg元素中的src属性  
-        $(bigimg).attr("src", src);//设置#bigimg元素的src属性  
-      
-            /*获取当前点击图片的真实大小，并显示弹出层及大图*/  
-        $("<img/>").attr("src", src).load(function(){  
-            var windowW = $(window).width();//获取当前窗口宽度  
-            var windowH = $(window).height();//获取当前窗口高度  
-            var realWidth = this.width;//获取图片真实宽度  
-            var realHeight = this.height;//获取图片真实高度  
-            var imgWidth, imgHeight;  
-            var scale = 0.8;//缩放尺寸，当图片真实宽度和高度大于窗口宽度和高度时进行缩放  
-              
-            if(realHeight>windowH*scale) {//判断图片高度  
-                imgHeight = windowH*scale;//如大于窗口高度，图片高度进行缩放  
-                imgWidth = imgHeight/realHeight*realWidth;//等比例缩放宽度  
-                if(imgWidth>windowW*scale) {//如宽度扔大于窗口宽度  
-                    imgWidth = windowW*scale;//再对宽度进行缩放  
-                }  
-            } else if(realWidth>windowW*scale) {//如图片高度合适，判断图片宽度  
-                imgWidth = windowW*scale;//如大于窗口宽度，图片宽度进行缩放  
-                            imgHeight = imgWidth/realWidth*realHeight;//等比例缩放高度  
-            } else {//如果图片真实高度和宽度都符合要求，高宽不变  
-                imgWidth = realWidth;  
-                imgHeight = realHeight;  
-            }  
-                    $(bigimg).css("width",imgWidth);//以最终的宽度对图片缩放  
-              
-            var w = (windowW-imgWidth)/2;//计算图片与窗口左边距  
-            var h = (windowH-imgHeight)/2;//计算图片与窗口上边距  
-            $(innerdiv).css({"top":h, "left":w});//设置#innerdiv的top和left属性  
-            $(outerdiv).fadeIn("fast");//淡入显示#outerdiv及.pimg  
-        });  
-          
-        $(outerdiv).click(function(){//再次点击淡出消失弹出层  
-            $(this).fadeOut("fast");  
-        });  
-    }  
-</script> 
 
 <style>
 .row {
@@ -246,9 +225,10 @@
 }
 
 .column {
-  flex: 25%;
+  flex: 50%;
   padding: 5px;
 }
+
 </style>
 
             <!-- Tags -->
@@ -290,10 +270,6 @@
 
 <!-- Disqus Comments -->
 
-
-
-    <script type="text/javascript" src="/js/fancybox/jquery.fancybox.min.js"></script>
-    <script type="text/javascript" src="/js/wrapImage.js"></script>
 
 </body>
 
